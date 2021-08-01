@@ -17,15 +17,15 @@ createServer( {
           id: 1,
           title: 'freelancer',
           type: 'deposit',
-          category: 'dev',
+          category: 'development',
           amount: 1000,
           createdAt: new Date(),
         },
         {
           id: 2,
-          title: 'buy',
+          title: 'Sushi',
           type: 'withdraw',
-          category: 'house',
+          category: 'Food',
           amount: 100,
           createdAt: new Date(),
         }
