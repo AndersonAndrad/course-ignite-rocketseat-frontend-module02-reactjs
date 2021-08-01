@@ -10,6 +10,29 @@ createServer( {
     transaction: Model,
   },
 
+  seeds ( server ) {
+    server.db.loadData( {
+      transactions: [
+        {
+          id: 1,
+          title: 'freelancer',
+          type: 'deposit',
+          category: 'dev',
+          amount: 1000,
+          createdAt: new Date(),
+        },
+        {
+          id: 2,
+          title: 'buy',
+          type: 'withdraw',
+          category: 'house',
+          amount: 100,
+          createdAt: new Date(),
+        }
+      ]
+    } )
+  },
+
   routes () {
     this.namespace = 'api'
 
@@ -20,7 +43,7 @@ createServer( {
     this.post( '/transactions', ( schema, request ) => {
       const data = JSON.parse( request.requestBody )
 
-      return schema.create( 'transaction', data )
+      return schema.create( 'transaction', { ...data, createdAt: new Date() } )
     } )
   }
 } )
